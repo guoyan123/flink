@@ -30,7 +30,7 @@ import org.apache.flink.annotation.Public;
  * @param <OUT> Type of the returned elements.
  */
 @Public
-public abstract class RichMapFunction<IN, OUT> extends AbstractRichFunction implements MapFunction<IN, OUT> {
+public abstract class RichFunction<IN, OUT> extends AbstractRichFunction implements MapFunction<IN, OUT> {
 
 	private static final long serialVersionUID = 1L;
 

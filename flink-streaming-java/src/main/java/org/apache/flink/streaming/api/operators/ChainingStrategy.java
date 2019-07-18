@@ -33,10 +33,10 @@ import org.apache.flink.annotation.PublicEvolving;
 public enum ChainingStrategy {
 
 	/**
-	 * Operators will be eagerly chained whenever possible.
+	 * Operators will be eagerly chained whenever possible.只要可能，Operators将被热切地chained链接。
 	 *
 	 * <p>To optimize performance, it is generally a good practice to allow maximal
-	 * chaining and increase operator parallelism.
+	 * chaining and increase operator parallelism.(为了优化性能，通常最好允许最大链和增加操作符并行性。)
 	 */
 	ALWAYS,
 
@@ -47,7 +47,7 @@ public enum ChainingStrategy {
 
 	/**
 	 * The operator will not be chained to the predecessor, but successors may chain to this
-	 * operator.
+	 * operator.(操作符将不会被链接到前一个操作符，但是后续操作符可以链接到该操作符。)
 	 */
 	HEAD
 }

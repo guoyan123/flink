@@ -1583,7 +1583,7 @@ public abstract class StreamExecutionEnvironment {
 
 	/**
 	 * Creates an execution environment that represents the context in which the
-	 * program is currently executed. If the program is invoked standalone, this
+	 * program is currently executed. If the program is invoked standalone（独立调用）, this
 	 * method returns a local execution environment, as returned by
 	 * {@link #createLocalEnvironment()}.
 	 *
@@ -1595,8 +1595,8 @@ public abstract class StreamExecutionEnvironment {
 			return contextEnvironmentFactory.createExecutionEnvironment();
 		}
 
-		// because the streaming project depends on "flink-clients" (and not the other way around)
-		// we currently need to intercept the data set environment and create a dependent stream env.
+		// because the streaming project depends on "flink-clients" (and not the other way around  而不是反过来)
+		// we currently need to intercept  拦截  the data set environment and create a dependent stream env.
 		// this should be fixed once we rework the project dependencies
 
 		ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();

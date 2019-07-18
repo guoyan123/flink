@@ -1093,7 +1093,7 @@ public abstract class ExecutionEnvironment {
 	/**
 	 * Creates a {@link LocalEnvironment}. The local execution environment will run the program in a
 	 * multi-threaded fashion in the same JVM as the environment was created in. It will use the
-	 * parallelism specified in the parameter.
+	 * parallelism specified in the parameter.本地执行环境将在创建环境的JVM中以多线程方式运行程序。它将使用参数中指定的并行度。
 	 *
 	 * @param parallelism The parallelism for the local environment.
 	 * @return A local execution environment with the specified parallelism.
@@ -1266,7 +1266,8 @@ public abstract class ExecutionEnvironment {
 
 	/**
 	 * Checks whether it is currently permitted to explicitly instantiate a LocalEnvironment
-	 * or a RemoteEnvironment.
+	 * or a RemoteEnvironment.(检查当前是否允许显式实例化LocalEnvironment
+	 或RemoteEnvironment。)
 	 *
 	 * @return True, if it is possible to explicitly instantiate a LocalEnvironment or a
 	 *         RemoteEnvironment, false otherwise.

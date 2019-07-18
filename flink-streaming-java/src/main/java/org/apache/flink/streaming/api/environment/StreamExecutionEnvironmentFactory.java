@@ -32,3 +32,4 @@ public interface StreamExecutionEnvironmentFactory {
 	 */
 	StreamExecutionEnvironment createExecutionEnvironment();
 }
+

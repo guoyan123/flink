@@ -36,12 +36,20 @@ import javax.annotation.Nonnull;
 
 /**
  * The LocalStreamEnvironment is a StreamExecutionEnvironment that runs the program locally,
- * multi-threaded, in the JVM where the environment is instantiated. It spawns an embedded
+ * multi-threaded, in the JVM where the environment is instantiated. It spawns an embedded(嵌入式)
  * Flink cluster in the background and executes the program on that cluster.
  *
- * <p>When this environment is instantiated, it uses a default parallelism of {@code 1}. The default
+ * <p>When this environment is instantiated(实例化), it uses a default parallelism of {@code 1}. The default
  * parallelism can be set via {@link #setParallelism(int)}.
  */
+
+/*  LocalStreamEnvironment是一个在本地运行程序的StreamExecutionEnvironment，
+	多线程，在JVM中实例化环境。它生成一个嵌入式
+	在后台运行Flink集群，并在该集群上执行程序。
+	当这个环境被实例化时，它使用默认的并行度{@code 1}。默认的
+	并行度可以通过{@link #setParallelism(int)}设置。
+	*/
+
 @Public
 public class LocalStreamEnvironment extends StreamExecutionEnvironment {
 

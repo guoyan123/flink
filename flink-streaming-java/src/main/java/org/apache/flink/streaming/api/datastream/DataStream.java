@@ -177,7 +177,7 @@ public class DataStream<T> {
 
 	/**
 	 * Invokes the {@link org.apache.flink.api.java.ClosureCleaner}
-	 * on the given function if closure cleaning is enabled in the {@link ExecutionConfig}.
+	 * on the given function if closure 关闭 cleaning 清理 is enabled in the {@link ExecutionConfig}.
 	 *
 	 * @return The cleaned Function
 	 */
@@ -597,6 +597,11 @@ public class DataStream<T> {
 	 * including none. The user can also extend {@link RichFlatMapFunction} to
 	 * gain access to other features provided by the
 	 * {@link org.apache.flink.api.common.functions.RichFunction} interface.
+	 * 在{@link DataStream}上应用平面映射转换。对数据流中每个数据元素调用{@link FlatMapFunction}
+	 。每个FlatMapFunction调用可以返回任意数量的元素
+	 包括没有。用户还可以将{@link RichFlatMapFunction}扩展到
+	 的其他功能
+
 	 *
 	 * @param flatMapper
 	 *            The FlatMapFunction that is called for each element of the
@@ -607,10 +612,11 @@ public class DataStream<T> {
 	 * @return The transformed {@link DataStream}.
 	 */
 	public <R> SingleOutputStreamOperator<R> flatMap(FlatMapFunction<T, R> flatMapper) {
-
+//用反射拿到了flatMap算子的输出类型
 		TypeInformation<R> outType = TypeExtractor.getFlatMapReturnTypes(clean(flatMapper),
-				getType(), Utils.getCallLocationName(), true);
 
+				getType(), Utils.getCallLocationName(), true);
+//生成了一个Operator
 		return transform("Flat Map", outType, new StreamFlatMap<>(clean(flatMapper)));
 
 	}

@@ -82,12 +82,12 @@ import static org.apache.flink.api.java.typeutils.TypeExtractionUtils.sameTypeVa
 import static org.apache.flink.api.java.typeutils.TypeExtractionUtils.typeToClass;
 
 /**
- * A utility for reflection analysis on classes, to determine the return type of implementations of transformation
+ * A utility实用程序 for reflection反射 analysis on classes, to determine确定 the return type of implementations实现 of transformation
  * functions.
  *
  * <p>NOTES FOR USERS OF THIS CLASS:
- * Automatic type extraction is a hacky business that depends on a lot of variables such as generics,
- * compiler, interfaces, etc. The type extraction fails regularly with either {@link MissingTypeInfo} or
+ * Automatic type extraction抽取 is a hacky business that depends on a lot of variables such as generics泛型,
+ * compiler编译器, interfaces接口, etc. The type extraction fails regularly定期地 with either {@link MissingTypeInfo} or
  * hard exceptions. Whenever you use methods of this class, make sure to provide a way to pass custom
  * type information as a fallback.
  */
