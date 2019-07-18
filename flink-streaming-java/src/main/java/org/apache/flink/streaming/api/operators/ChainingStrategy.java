@@ -36,7 +36,7 @@ public enum ChainingStrategy {
 	 * Operators will be eagerly chained whenever possible.只要可能，Operators将被热切地chained链接。
 	 *
 	 * <p>To optimize performance, it is generally a good practice to allow maximal
-	 * chaining and increase operator parallelism.(为了优化性能，通常最好允许最大链和增加操作符并行性。)
+	 * chaining and increase operator parallelism.(为了优化性能，通常最好允许最大链和增加操作符并行性。    )
 	 */
 	ALWAYS,
 
