@@ -111,7 +111,8 @@ public class StreamGraphGenerator {
 	}
 
 	/**
-	 * Generates a {@code StreamGraph} by traversing the graph of {@code StreamTransformations}
+	 * Generates a {@code StreamGraph} by traversing(
+	 遍历) the graph of {@code StreamTransformations}
 	 * starting from the given transformations.
 	 *
 	 * @param env The {@code StreamExecutionEnvironment} that is used to set some parameters of the
@@ -138,7 +139,7 @@ public class StreamGraphGenerator {
 	 * Transforms one {@code StreamTransformation}.
 	 *
 	 * <p>This checks whether we already transformed it and exits early in that case. If not it
-	 * delegates to one of the transformation specific methods.
+	 * delegates代表 to one of the transformation specific methods.（这将检查是否已经对其进行了转换，并在这种情况下提前退出。如果没有，它将委托给特定的转换方法。）
 	 */
 	private Collection<Integer> transform(StreamTransformation<?> transform) {
 
@@ -162,6 +163,7 @@ public class StreamGraphGenerator {
 		transform.getOutputType();
 
 		Collection<Integer> transformedIds;
+		//instanceof 是 Java 的保留关键字。它的作用是测试它左边的对象是否是它右边的类的实例，返回 boolean 的数据类型。
 		if (transform instanceof OneInputTransformation<?, ?>) {
 			transformedIds = transformOneInputTransform((OneInputTransformation<?, ?>) transform);
 		} else if (transform instanceof TwoInputTransformation<?, ?, ?>) {
@@ -189,7 +191,7 @@ public class StreamGraphGenerator {
 		}
 
 		// need this check because the iterate transformation adds itself before
-		// transforming the feedback edges
+		// transforming the feedback edges  注意这里和函数开始时的方法相对应，在有向图中要注意避免循环的产生
 		if (!alreadyTransformed.containsKey(transform)) {
 			alreadyTransformed.put(transform, transformedIds);
 		}
@@ -524,20 +526,25 @@ public class StreamGraphGenerator {
 	/**
 	 * Transforms a {@code OneInputTransformation}.
 	 *
-	 * <p>This recursively transforms the inputs, creates a new {@code StreamNode} in the graph and
-	 * wired the inputs to this new node.
+	 * <p>This recursively(递归地) transforms the inputs, creates a new {@code StreamNode} in the graph and
+	 * wired(连线) the inputs to this new node.
 	 */
 	private <IN, OUT> Collection<Integer> transformOneInputTransform(OneInputTransformation<IN, OUT> transform) {
 
 		Collection<Integer> inputIds = transform(transform.getInput());
 
 		// the recursive call might have already transformed this
+		//// 在递归处理节点过程中，某个节点可能已经被其他子节点先处理过了，需要跳过
 		if (alreadyTransformed.containsKey(transform)) {
 			return alreadyTransformed.get(transform);
 		}
-
+		//这里是获取slotSharingGroup。这个group用来定义当前我们在处理的这个操作符可以跟什么操作符chain到一个slot里进行操作
+		//因为有时候我们可能不满意flink替我们做的chain聚合
+		//一个slot就是一个执行task的基本容器
 		String slotSharingGroup = determineSlotSharingGroup(transform.getSlotSharingGroup(), inputIds);
 
+
+		//把该operator加入图
 		streamGraph.addOperator(transform.getId(),
 				slotSharingGroup,
 				transform.getCoLocationGroupKey(),
@@ -546,6 +553,10 @@ public class StreamGraphGenerator {
 				transform.getOutputType(),
 				transform.getName());
 
+		//对于keyedStream，我们还要记录它的keySelector方法
+		//flink并不真正为每个keyedStream保存一个key，而是每次需要用到key的时候都使用keySelector方法进行计算
+		//因此，我们自定义的keySelector方法需要保证幂等性
+		//到后面介绍keyGroup的时候我们还会再次提到这一点
 		if (transform.getStateKeySelector() != null) {
 			TypeSerializer<?> keySerializer = transform.getStateKeyType().createSerializer(env.getConfig());
 			streamGraph.setOneInputStateKey(transform.getId(), transform.getStateKeySelector(), keySerializer);

@@ -140,10 +140,10 @@ public abstract class StreamTransformation<T> {
 	private ResourceSpec preferredResources = ResourceSpec.DEFAULT;
 
 	/**
-	 * User-specified ID for this transformation. This is used to assign the
+	 * User-specified ID for this transformation. This is used to assign（分配） the
 	 * same operator ID across job restarts. There is also the automatically
 	 * generated {@link #id}, which is assigned from a static counter. That
-	 * field is independent from this.
+	 * field is independent from this.转换的用户指定ID。这用于在作业重新启动时分配相同的操作符ID。还有自动生成的{@link #id}，它是从静态计数器分配的。这个场与这个场无关。
 	 */
 	private String uid;
 
@@ -264,7 +264,7 @@ public abstract class StreamTransformation<T> {
 
 	/**
 	 * Sets an user provided hash for this operator. This will be used AS IS the create the
-	 * JobVertexID.
+	 * JobVertexID.  这将用于创建JobVertexID
 	 *
 	 * <p>The user provided hash is an alternative to the generated hashes, that is considered when
 	 * identifying an operator through the default hash mechanics fails (e.g. because of changes

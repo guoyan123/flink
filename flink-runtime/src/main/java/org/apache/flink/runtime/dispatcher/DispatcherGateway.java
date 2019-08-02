@@ -32,7 +32,7 @@ import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * Gateway for the Dispatcher component.
+ * Gateway（网关） for the Dispatcher(分配器) component.
  */
 public interface DispatcherGateway extends FencedRpcGateway<DispatcherId>, RestfulGateway {
 
@@ -57,10 +57,10 @@ public interface DispatcherGateway extends FencedRpcGateway<DispatcherId>, Restf
 		@RpcTimeout Time timeout);
 
 	/**
-	 * Returns the port of the blob server.
+	 * Returns the port of the blob（啥意思？） server返回blob服务器的端口。.
 	 *
 	 * @param timeout of the operation
-	 * @return A future integer of the blob server port
+	 * @return A future integer of the blob server port  （link 用来管理二进制大文件的服务，flink JobManager 中启动的 BLOB Server 负责监听请求并派发线程去处理。更进一步，它将负责创建对应的目录结构去存储这些 BLOBs 或者只是临时性地缓存。背后支持的文件系统：本底磁盘   参考：http://chenyuzhao.me/2017/02/08/jobmanager%E5%9F%BA%E6%9C%AC%E7%BB%84%E4%BB%B6/）
 	 */
 	CompletableFuture<Integer> getBlobServerPort(@RpcTimeout Time timeout);
 

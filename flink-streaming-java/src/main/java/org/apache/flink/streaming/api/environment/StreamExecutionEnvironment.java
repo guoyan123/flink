@@ -1563,7 +1563,7 @@ public abstract class StreamExecutionEnvironment {
 
 	/**
 	 * Adds an operator to the list of operators that should be executed when calling
-	 * {@link #execute}.
+	 * {@link #execute}. (将operator操作增加到执行操作列表中)
 	 *
 	 * <p>When calling {@link #execute()} only the operators that where previously added to the list
 	 * are executed.

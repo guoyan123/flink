@@ -401,7 +401,10 @@ public class StreamGraph extends StreamingPlan {
 				outputTag = virtualSideOutputNodes.get(virtualId).f1;
 			}
 			addEdgeInternal(upStreamVertexID, downStreamVertexID, typeNumber, partitioner, null, outputTag);
-		} else if (virtualSelectNodes.containsKey(upStreamVertexID)) {
+
+		}
+		////如果输入边是select，则把select的输入边作为本节点的输入边
+		else if (virtualSelectNodes.containsKey(upStreamVertexID)) {
 			int virtualId = upStreamVertexID;
 			upStreamVertexID = virtualSelectNodes.get(virtualId).f0;
 			if (outputNames.isEmpty()) {
@@ -653,7 +656,7 @@ public class StreamGraph extends StreamingPlan {
 	}
 
 	/**
-	 * Gets the assembled {@link JobGraph} with a given job id.
+	 * Gets the assembled(组装) {@link JobGraph} with a given job id.
 	 */
 	@SuppressWarnings("deprecation")
 	@Override

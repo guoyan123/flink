@@ -27,7 +27,7 @@ import org.apache.flink.runtime.jobgraph.JobGraph;
 import javax.annotation.Nullable;
 
 /**
- * Abstract class representing Flink Streaming plans
+ * Abstract class representing Flink Streaming plans(表示Flink流计划的抽象类)
  * 
  */
 public abstract class StreamingPlan implements FlinkPlan {

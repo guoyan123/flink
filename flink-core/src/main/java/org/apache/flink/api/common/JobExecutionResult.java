@@ -125,7 +125,7 @@ public class JobExecutionResult extends JobSubmissionResult {
 	}
 
 	/**
-	 * Returns a dummy object for wrapping a JobSubmissionResult.
+	 * Returns a dummy object for wrapping a JobSubmissionResult.返回用于包装JobSubmissionResult的虚拟对象。
 	 * @param result The SubmissionResult
 	 * @return a JobExecutionResult
 	 * @deprecated Will be removed in future versions.

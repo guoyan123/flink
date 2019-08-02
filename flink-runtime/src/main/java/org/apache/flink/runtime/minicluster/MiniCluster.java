@@ -636,7 +636,7 @@ public class MiniCluster implements JobExecutorService, AutoCloseableAsync {
 
 	/**
 	 * This method runs a job in blocking mode. The method returns only after the job
-	 * completed successfully, or after it failed terminally.
+	 * completed successfully, or after it failed terminally(晚期).
 	 *
 	 * @param job  The Flink job to execute
 	 * @return The result of the job execution
@@ -651,6 +651,14 @@ public class MiniCluster implements JobExecutorService, AutoCloseableAsync {
 		final CompletableFuture<JobSubmissionResult> submissionFuture = submitJob(job);
 
 		final CompletableFuture<JobResult> jobResultFuture = submissionFuture.thenCompose(
+			/*
+			* Lambda 表达式，也可称为闭包，它是推动 Java 8 发布的最重要新特性。
+              Lambda 允许把函数作为一个方法的参数（函数作为参数传递进方法中）。
+              使用 Lambda 表达式可以使代码变的更加简洁紧凑。
+			*接收2个int型整数,返回他们的和
+            * (int x, int y) -> x + y
+			*
+			*/
 			(JobSubmissionResult ignored) -> requestJobResult(job.getJobID()));
 
 		final JobResult jobResult;
@@ -678,7 +686,7 @@ public class MiniCluster implements JobExecutorService, AutoCloseableAsync {
 		}
 
 		// we have to allow queued scheduling in Flip-6 mode because we need to request slots
-		// from the ResourceManager
+		// from the ResourceManager 我们必须允许以Flip-6模式(资源调度模型重构  可参考：http://www.whitewood.me/2018/06/17/FLIP6-%E8%B5%84%E6%BA%90%E8%B0%83%E5%BA%A6%E6%A8%A1%E5%9E%8B%E9%87%8D%E6%9E%84/  或 https://www.cnblogs.com/bethunebtj/p/9168274.html#72-flip-6-部署及处理模型演进)进行队列调度，因为我们需要从ResourceManager请求slots
 		jobGraph.setAllowQueuedScheduling(true);
 
 		final CompletableFuture<InetSocketAddress> blobServerAddressFuture = createBlobServerAddress(dispatcherGateway);

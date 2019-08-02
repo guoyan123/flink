@@ -24,9 +24,9 @@ package org.apache.flink.runtime.rpc;
 public interface RpcGateway {
 
 	/**
-	 * Returns the fully qualified address under which the associated rpc endpoint is reachable.
+	 * Returns the fully qualified address under which the associated rpc endpoint is reachable.（返回可访问关联rpc端点的完全限定地址。）
 	 *
-	 * @return Fully qualified (RPC) address under which the associated rpc endpoint is reachable
+	 * @return Fully qualified (RPC) address under which the associated rpc endpoint is reachable（完全限定(RPC)地址，在此地址下可以访问关联的RPC端点）
 	 */
 	String getAddress();
 

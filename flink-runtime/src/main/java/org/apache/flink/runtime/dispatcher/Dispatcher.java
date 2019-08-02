@@ -93,7 +93,7 @@ import java.util.stream.Collectors;
  * Base class for the Dispatcher component. The Dispatcher component is responsible
  * for receiving job submissions, persisting them, spawning JobManagers to execute
  * the jobs and to recover them in case of a master failure. Furthermore, it knows
- * about the state of the Flink session cluster.
+ * about the state of the Flink session cluster. （Dispatcher组件的基类。Dispatcher组件负责接收作业提交、持久化它们、生成作业管理器来执行作业，并在主程序失败时恢复它们。此外，它还知道Flink会话集群的状态。）
  */
 public abstract class Dispatcher extends FencedRpcEndpoint<DispatcherId> implements
 	DispatcherGateway, LeaderContender, SubmittedJobGraphStore.SubmittedJobGraphListener {

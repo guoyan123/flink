@@ -168,6 +168,11 @@ under the License.
 			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
+<!--		<dependency>
+			<groupId>org.apache.flink</groupId>
+			<artifactId>flink-s3-fs-hadoop</artifactId>
+			<version>1.7.0</version>
+		</dependency>-->
 
 		<dependency>
 			<groupId>org.mockito</groupId>
@@ -1185,10 +1190,10 @@ under the License.
 				</configuration>
 			</plugin>
 
-			<plugin>
+			<!--<plugin>
 				<groupId>org.apache.rat</groupId>
 				<artifactId>apache-rat-plugin</artifactId>
-				<version>0.12</version><!--$NO-MVN-MAN-VER$-->
+				<version>0.12</version>&lt;!&ndash;$NO-MVN-MAN-VER$&ndash;&gt;
 				<inherited>false</inherited>
 				<executions>
 					<execution>
@@ -1202,7 +1207,7 @@ under the License.
 					<excludeSubProjects>false</excludeSubProjects>
 					<numUnapprovedLicenses>0</numUnapprovedLicenses>
 					<licenses>
-						<!-- Enforce this license:
+						&lt;!&ndash; Enforce this license:
 							Licensed to the Apache Software Foundation (ASF) under one
 							or more contributor license agreements.  See the NOTICE file
 							distributed with this work for additional information
@@ -1217,7 +1222,7 @@ under the License.
 							KIND, either express or implied.  See the License for the
 							specific language governing permissions and limitations
 							under the License.
-						-->
+						&ndash;&gt;
 						<license implementation="org.apache.rat.analysis.license.SimplePatternBasedLicense">
 							<licenseFamilyCategory>AL2 </licenseFamilyCategory>
 							<licenseFamilyName>Apache License 2.0</licenseFamilyName>
@@ -1233,11 +1238,11 @@ under the License.
 						</licenseFamily>
 					</licenseFamilies>
 					<excludes>
-						<!-- Additional files like .gitignore etc.-->
+						&lt;!&ndash; Additional files like .gitignore etc.&ndash;&gt;
 						<exclude>**/.*/**</exclude>
 						<exclude>**/*.prefs</exclude>
 						<exclude>**/*.log</exclude>
-						<!-- External web libraries. -->
+						&lt;!&ndash; External web libraries. &ndash;&gt;
 						<exclude>docs/**/jquery*</exclude>
 						<exclude>docs/**/bootstrap*</exclude>
 						<exclude>docs/Gemfile.lock</exclude>
@@ -1249,33 +1254,33 @@ under the License.
 						<exclude>**/resources/**/bootstrap*</exclude>
 						<exclude>flink-clients/src/main/resources/web-docs/js/*d3.js</exclude>
 
-						<!-- the licenses that are re-bundled -->
+						&lt;!&ndash; the licenses that are re-bundled &ndash;&gt;
 						<exclude>**/packaged_licenses/LICENSE.*.txt</exclude>
 						<exclude>**/licenses/LICENSE*</exclude>
 						<exclude>**/licenses-binary/LICENSE*</exclude>
 
-						<!-- web dashboard config JSON files -->
+						&lt;!&ndash; web dashboard config JSON files &ndash;&gt;
 						<exclude>flink-runtime-web/web-dashboard/package.json</exclude>
 						<exclude>flink-runtime-web/web-dashboard/bower.json</exclude>
 
-						<!-- web dashboard files under 3rd party license -->
+						&lt;!&ndash; web dashboard files under 3rd party license &ndash;&gt;
 						<exclude>flink-runtime-web/web-dashboard/vendor-local/d3-timeline.js</exclude>
 						<exclude>flink-runtime-web/web-dashboard/assets/fonts/FontAwesome.otf</exclude>
 						<exclude>flink-runtime-web/web-dashboard/assets/fonts/fontawesome*</exclude>
 
-						<!-- web dashboard non-binary image assets -->
+						&lt;!&ndash; web dashboard non-binary image assets &ndash;&gt;
 						<exclude>flink-runtime-web/web-dashboard/assets/images/manifest.json</exclude>
 						<exclude>flink-runtime-web/web-dashboard/assets/images/safari-pinned-tab.svg</exclude>
 
-						<!-- generated contents -->
+						&lt;!&ndash; generated contents &ndash;&gt;
 						<exclude>flink-runtime-web/web-dashboard/web/**</exclude>
 
-						<!-- downloaded and generated web libraries. -->
+						&lt;!&ndash; downloaded and generated web libraries. &ndash;&gt;
 						<exclude>flink-runtime-web/web-dashboard/node_modules/**</exclude>
 						<exclude>flink-runtime-web/web-dashboard/bower_components/**</exclude>
 						<exclude>flink-runtime-web/web-dashboard/tmp/**</exclude>
 
-						<!-- Test Data. -->
+						&lt;!&ndash; Test Data. &ndash;&gt;
 						<exclude>**/src/test/resources/*-data</exclude>
 						<exclude>flink-tests/src/test/resources/testdata/terainput.txt</exclude>
                         <exclude>flink-formats/flink-avro/src/test/resources/flink_11-kryo_registrations</exclude>
@@ -1288,7 +1293,7 @@ under the License.
 						<exclude>flink-end-to-end-tests/test-scripts/test-data/*</exclude>
 						<exclude>flink-end-to-end-tests/test-scripts/docker-hadoop-secure-cluster/config/keystore.jks</exclude>
 
-						<!-- snapshots -->
+						&lt;!&ndash; snapshots &ndash;&gt;
 						<exclude>**/src/test/resources/*-snapshot</exclude>
 						<exclude>**/src/test/resources/*.snapshot</exclude>
 						<exclude>**/src/test/resources/*-savepoint</exclude>
@@ -1304,43 +1309,43 @@ under the License.
 						<exclude>flink-formats/flink-parquet/src/test/resources/avro/**</exclude>
 						<exclude>flink-libraries/flink-python/src/test/python/org/apache/flink/python/api/data_csv</exclude>
 						<exclude>flink-libraries/flink-python/src/test/python/org/apache/flink/python/api/data_text</exclude>
-						<!-- netty test file, still Apache License 2.0 but with a different header -->
+						&lt;!&ndash; netty test file, still Apache License 2.0 but with a different header &ndash;&gt;
 						<exclude>flink-runtime/src/test/java/org/apache/flink/runtime/io/network/buffer/AbstractByteBufTest.java</exclude>
-						<!-- Configuration Files. -->
+						&lt;!&ndash; Configuration Files. &ndash;&gt;
 						<exclude>**/flink-bin/conf/slaves</exclude>
 						<exclude>**/flink-bin/conf/masters</exclude>
-						<!-- Administrative files in the main trunk. -->
+						&lt;!&ndash; Administrative files in the main trunk. &ndash;&gt;
 						<exclude>**/README.md</exclude>
 						<exclude>.github/**</exclude>
-						<!-- Build files -->
+						&lt;!&ndash; Build files &ndash;&gt;
 						<exclude>**/*.iml</exclude>
 						<exclude>flink-quickstart/**/testArtifact/goal.txt</exclude>
-						<!-- Generated content -->
+						&lt;!&ndash; Generated content &ndash;&gt;
 						<exclude>out/**</exclude>
 						<exclude>**/target/**</exclude>
 						<exclude>docs/content/**</exclude>
 						<exclude>**/scalastyle-output.xml</exclude>
 						<exclude>build-target/**</exclude>
 						<exclude>docs/_includes/generated/**</exclude>
-						<!-- Tools: watchdog -->
+						&lt;!&ndash; Tools: watchdog &ndash;&gt;
 						<exclude>tools/artifacts/**</exclude>
 						<exclude>tools/flink*/**</exclude>
-						<!-- artifacts created during release process -->
+						&lt;!&ndash; artifacts created during release process &ndash;&gt;
 						<exclude>tools/releasing/release/**</exclude>
-						<!-- manually installed version on travis -->
+						&lt;!&ndash; manually installed version on travis &ndash;&gt;
 						<exclude>apache-maven-3.2.5/**</exclude>
-						<!-- PyCharm -->
+						&lt;!&ndash; PyCharm &ndash;&gt;
 						<exclude>**/.idea/**</exclude>
-						<!-- Generated code via Avro -->
+						&lt;!&ndash; Generated code via Avro &ndash;&gt;
 						<exclude>flink-end-to-end-tests/flink-confluent-schema-registry/src/main/java/example/avro/**</exclude>
 						<exclude>flink-end-to-end-tests/flink-datastream-allround-test/src/main/java/org/apache/flink/streaming/tests/avro/**</exclude>
-						<!-- Files generated by jepsen tests -->
+						&lt;!&ndash; Files generated by jepsen tests &ndash;&gt;
 						<exclude>flink-jepsen/store/**</exclude>
 						<exclude>flink-jepsen/docker/id_rsa*</exclude>
 						<exclude>flink-jepsen/docker/nodes</exclude>
 					</excludes>
 				</configuration>
-			</plugin>
+			</plugin>-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
@@ -1558,7 +1563,7 @@ under the License.
 		<pluginManagement>
 			<plugins>
 
-				<plugin>
+				<!--<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-checkstyle-plugin</artifactId>
 					<version>2.17</version>
@@ -1566,7 +1571,7 @@ under the License.
 						<dependency>
 							<groupId>com.puppycrawl.tools</groupId>
 							<artifactId>checkstyle</artifactId>
-							<!-- Note: match version with docs/flinkDev/ide_setup.md -->
+							&lt;!&ndash; Note: match version with docs/flinkDev/ide_setup.md &ndash;&gt;
 							<version>8.9</version>
 						</dependency>
 					</dependencies>
@@ -1586,7 +1591,7 @@ under the License.
 						<logViolationsToConsole>true</logViolationsToConsole>
 						<failOnViolation>true</failOnViolation>
 					</configuration>
-				</plugin>
+				</plugin>-->
 				
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>

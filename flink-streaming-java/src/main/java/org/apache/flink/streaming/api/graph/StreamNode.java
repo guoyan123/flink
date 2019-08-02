@@ -35,7 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class representing the operators in the streaming programs, with all their properties.
+ * Class representing（代表） the operators in the streaming programs, with all their properties.
  */
 @Internal
 public class StreamNode implements Serializable {

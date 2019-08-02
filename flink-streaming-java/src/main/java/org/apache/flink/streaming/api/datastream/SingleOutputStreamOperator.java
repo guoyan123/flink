@@ -39,7 +39,7 @@ import static org.apache.flink.util.Preconditions.checkArgument;
 
 /**
  * {@code SingleOutputStreamOperator} represents a user defined transformation
- * applied on a {@link DataStream} with one predefined output type.
+ * applied on a {@link DataStream} with one predefined output type.（{@code SingleOutputStreamOperator}表示用户定义的转换操作作用于带有预定义输出类型的{@link DataStream}。）
  *
  * @param <T> The type of the elements in this stream.
  */

@@ -176,7 +176,7 @@ public class DataStream<T> {
 	}
 
 	/**
-	 * Invokes the {@link org.apache.flink.api.java.ClosureCleaner}
+	 * Invokes(调用) the {@link org.apache.flink.api.java.ClosureCleaner}
 	 * on the given function if closure 关闭 cleaning 清理 is enabled in the {@link ExecutionConfig}.
 	 *
 	 * @return The cleaned Function
@@ -202,7 +202,7 @@ public class DataStream<T> {
 	/**
 	 * Creates a new {@link DataStream} by merging {@link DataStream} outputs of
 	 * the same type with each other. The DataStreams merged using this operator
-	 * will be transformed simultaneously.
+	 * will be transformed simultaneously（同时）.
 	 *
 	 * @param streams
 	 *            The DataStreams to union output with.
@@ -1167,7 +1167,7 @@ public class DataStream<T> {
 
 	/**
 	 * Method for passing user defined operators along with the type
-	 * information that will transform the DataStream.
+	 * information that will transform the DataStream.(方法用途：用于传递用户定义的操作以及DataStream的类型 参数信息)
 	 *
 	 * @param operatorName
 	 *            name of the operator, for logging purposes
