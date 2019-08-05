@@ -24,6 +24,7 @@ import java.util.Map;
 
 /**
  * Interface for different implementations of generating hashes over a stream graph.
+ * 用于在流图上生成散列的不同实现的接口。
  */
 public interface StreamGraphHasher {
 

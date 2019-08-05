@@ -59,13 +59,13 @@ public class StreamGraphHasherV2 implements StreamGraphHasher {
 	/**
 	 * Returns a map with a hash for each {@link StreamNode} of the {@link
 	 * StreamGraph}. The hash is used as the {@link JobVertexID} in order to
-	 * identify nodes across job submissions if they didn't change.
+	 * identify（区分） nodes across job submissions if they（指StreamNodeS没有改变） didn't change.
 	 *
-	 * <p>The complete {@link StreamGraph} is traversed. The hash is either
-	 * computed from the transformation's user-specified id (see
-	 * {@link StreamTransformation#getUid()}) or generated in a deterministic way.
+	 * <p>The complete {@link StreamGraph} is traversed (遍历整个StreamGraph). The hash is either
+	 * computed计算 from the transformation's user-specified id (see
+	 * {@link StreamTransformation#getUid()}) or generated in a deterministic（确定的） way.
 	 *
-	 * <p>The generated hash is deterministic with respect to:
+	 * <p>The generated hash is deterministic with respect to: （生成hash取决于以下几点）
 	 * <ul>
 	 *   <li>node-local properties (node ID),
 	 *   <li>chained output nodes, and
