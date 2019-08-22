@@ -39,15 +39,15 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
 /**
  * A {@code StreamTransformation} represents the operation that creates a
  * {@link org.apache.flink.streaming.api.datastream.DataStream}. Every
- * {@link org.apache.flink.streaming.api.datastream.DataStream} has an underlying
- * {@code StreamTransformation} that is the origin of said DataStream.
+ * {@link org.apache.flink.streaming.api.datastream.DataStream} has an underlying（根本的，潜在的）
+ * {@code StreamTransformation} that is the origin of said DataStream.（这是上述数据流的起源）
  *
  * <p>API operations such as {@link org.apache.flink.streaming.api.datastream.DataStream#map} create
- * a tree of {@code StreamTransformation}s underneath. When the stream program is to be executed
+ * a tree of {@code StreamTransformation}s underneath（下面）. When the stream program is to be executed
  * this graph is translated to a {@link StreamGraph} using
  * {@link org.apache.flink.streaming.api.graph.StreamGraphGenerator}.
  *
- * <p>A {@code StreamTransformation} does not necessarily correspond to a physical operation
+ * <p>A {@code StreamTransformation} does not necessarily（一定） correspond（对应） to a physical operation
  * at runtime. Some operations are only logical concepts. Examples of this are union,
  * split/select data stream, partitioning.
  *
@@ -100,7 +100,7 @@ import static org.apache.flink.util.Preconditions.checkNotNull;
 @Internal
 public abstract class StreamTransformation<T> {
 
-	// This is used to assign a unique ID to every StreamTransformation
+	// This is used to assign分配 a unique ID to every StreamTransformation
 	protected static Integer idCounter = 0;
 
 	public static int getNewNodeId() {
@@ -143,7 +143,7 @@ public abstract class StreamTransformation<T> {
 	 * User-specified ID for this transformation. This is used to assign（分配） the
 	 * same operator ID across job restarts. There is also the automatically
 	 * generated {@link #id}, which is assigned from a static counter. That
-	 * field is independent from this.转换的用户指定ID。这用于在作业重新启动时分配相同的操作符ID。还有自动生成的{@link #id}，它是从静态计数器分配的。这个场与这个场无关。
+	 * field is independent from this.转换的用户指定ID。这用于在作业重新启动时分配相同的操作符ID。还有自动生成的{@link #id}，它是从静态计数器分配的。俩者没有关系。
 	 */
 	private String uid;
 

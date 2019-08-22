@@ -27,7 +27,7 @@ import static java.util.Objects.requireNonNull;
 import static org.apache.flink.util.Preconditions.checkNotNull;
 
 /**
- * Configuration that captures all checkpointing related settings.
+ * Configuration that captures all checkpointing related settings.捕获所有检查点相关设置的配置
  */
 @Public
 public class CheckpointConfig implements java.io.Serializable {

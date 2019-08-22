@@ -36,7 +36,7 @@ import java.util.concurrent.Future;
 
 /**
  * DistributedCache provides static methods to write the registered cache files into job configuration or decode
- * them from job configuration. It also provides user access to the file locally.
+ * them from job configuration. It also provides user access to the file locally(在本地).
  */
 @Public
 public class DistributedCache {
