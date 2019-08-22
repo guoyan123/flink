@@ -262,8 +262,8 @@ public abstract class StreamExecutionEnvironment {
 
 	/**
 	 * Disables operator chaining for streaming operators. Operator chaining
-	 * allows non-shuffle operations to be co-located in the same thread fully
-	 * avoiding serialization and de-serialization.
+	 * allows non-shuffle operations to be co-located(共存) in the same thread fully
+	 * avoiding 完全避免 serialization 序列化 and de-serialization 反序列化数据传输.
 	 *
 	 * @return StreamExecutionEnvironment with chaining disabled.
 	 */
